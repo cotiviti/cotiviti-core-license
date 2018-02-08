@@ -34,6 +34,7 @@
   <description>Cotiviti License for Mycila Maven License Plugin - This is the text for the internal license plugin</description>
 	<!-- URL for site gen -->
   <url>${cotiviti.site.view.url}</url>
+  <inceptionYear>2017</inceptionYear>
   <scm>
     <connection>scm:git:https://github.com/cotiviti/${project.artifactId}</connection>
     <developerConnection>scm:git:git@github.com:cotiviti/${project.artifactId}.git</developerConnection>
