@@ -23,7 +23,8 @@
     constitutes acknowledgement of and consent to this notice
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.cotiviti</groupId>
   <artifactId>cotiviti-core-license</artifactId>
@@ -54,7 +55,7 @@
       <url>dav:${cotiviti.site.view.url}</url>
     </site>
   </distributionManagement>
-   <issueManagement>
+  <issueManagement>
     <url>https://github.com/cotiviti/cotiviti-core-license/issues</url>
     <system>GitHub</system>
   </issueManagement>
@@ -83,6 +84,7 @@
     <maven.changes.plugin.version>2.12.1</maven.changes.plugin.version>
     <maven.project.info.plugin.version>2.9</maven.project.info.plugin.version>
     <maven.project.report.plugin.version>2.9</maven.project.report.plugin.version>
+    <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
     <maven.site.doxia.model.version>1.8</maven.site.doxia.model.version>
     <maven.site.fluid.skin.version>1.6</maven.site.fluid.skin.version>
     <maven.site.plugin.version>3.6</maven.site.plugin.version>
@@ -90,50 +92,58 @@
     <maven.wagon.version>3.0.0</maven.wagon.version>
   </properties>
   <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>${maven.site.plugin.version}</version>
-        <configuration>
-          <locales>en</locales>
-          <stagingDirectory>${project.build.directory}/Staging/</stagingDirectory>
-          <topSiteURL>${cotiviti.site.view.url}</topSiteURL>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.apache.maven.doxia</groupId>
-            <artifactId>doxia-module-markdown</artifactId>
-            <version>${maven.site.doxia.model.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>org.apache.maven.doxia</groupId>
-            <artifactId>doxia-module-fml</artifactId>
-            <version>${maven.site.doxia.model.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>org.apache.maven.doxia</groupId>
-            <artifactId>doxia-module-latex</artifactId>
-            <version>${maven.site.doxia.model.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>org.apache.maven.doxia</groupId>
-            <artifactId>doxia-module-apt</artifactId>
-            <version>${maven.site.doxia.model.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>org.apache.maven.doxia</groupId>
-            <artifactId>doxia-module-xdoc</artifactId>
-            <version>${maven.site.doxia.model.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>org.apache.maven.wagon</groupId>
-            <artifactId>wagon-webdav-jackrabbit</artifactId>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${maven.release.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>${maven.site.plugin.version}</version>
+          <configuration>
+            <locales>en</locales>
+            <stagingDirectory>${project.build.directory}/Staging/</stagingDirectory>
+            <topSiteURL>${cotiviti.site.view.url}</topSiteURL>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.apache.maven.doxia</groupId>
+              <artifactId>doxia-module-markdown</artifactId>
+              <version>${maven.site.doxia.model.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.maven.doxia</groupId>
+              <artifactId>doxia-module-fml</artifactId>
+              <version>${maven.site.doxia.model.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.maven.doxia</groupId>
+              <artifactId>doxia-module-latex</artifactId>
+              <version>${maven.site.doxia.model.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.maven.doxia</groupId>
+              <artifactId>doxia-module-apt</artifactId>
+              <version>${maven.site.doxia.model.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.maven.doxia</groupId>
+              <artifactId>doxia-module-xdoc</artifactId>
+              <version>${maven.site.doxia.model.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.maven.wagon</groupId>
+              <artifactId>wagon-webdav-jackrabbit</artifactId>
               <!-- This has to be here because, while this parent defines the version, it doesn't resolve "soon enough" -->
-            <version>${maven.wagon.version}</version>
-          </dependency>
-        </dependencies>
-      </plugin>
+              <version>${maven.wagon.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
       <plugin>
         <groupId>com.github.danielflower.mavenplugins</groupId>
         <artifactId>gitlog-maven-plugin</artifactId>
@@ -144,7 +154,6 @@
           <simpleHTMLChangeLogFilename>github-changelog-simple.html</simpleHTMLChangeLogFilename>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
   <reporting>
