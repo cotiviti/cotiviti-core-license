@@ -38,7 +38,7 @@
   <scm>
     <connection>scm:git:https://github.com/cotiviti/${project.artifactId}</connection>
     <developerConnection>scm:git:git@github.com:cotiviti/${project.artifactId}.git</developerConnection>
-    <url>https://github.com/cotiviti/${project.artifactId}/blob/${github.branch}</url>
+    <url>https://github.com/cotiviti/${project.artifactId}/blob/${cotiviti.github.branch}</url>
     <tag>HEAD</tag>
   </scm>
   <distributionManagement>
@@ -79,7 +79,7 @@
   <properties>
     <cotiviti.site.view.url>https://artifacts.cotiviti.io/repository/sites/${project.groupId}/${project.artifactId}/${project.version}</cotiviti.site.view.url>
     <gitlog.maven.plugin.version>1.13.7</gitlog.maven.plugin.version>
-    <github.branch>develop</github.branch>
+    <cotiviti.github.branch>develop</cotiviti.github.branch>
     <maven.changelog.plugin.version>2.3</maven.changelog.plugin.version>
     <maven.changes.plugin.version>2.12.1</maven.changes.plugin.version>
     <maven.project.info.plugin.version>2.9</maven.project.info.plugin.version>
