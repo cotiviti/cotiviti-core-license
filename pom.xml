@@ -1,0 +1,105 @@
+<!--
+
+    Copyright (C) 2015 Cotiviti Labs (nexgen.admin@cotiviti.io)
+
+    The software code contained herein is the property of Cotiviti Corporation
+    and its subsidiaries and affiliates (collectively, “Cotiviti”).
+    Access to this software code is being provided to you in the course of your
+    employment or affiliation with Cotiviti and may be used solely in the scope
+    and course of your work for Cotiviti, and is for internal Cotiviti use only.
+    Any unauthorized use, disclosure, copying, distribution, destruction of this
+    software code, or the taking of any unauthorized action in reliance on this
+    software code, is strictly prohibited.
+    If this information is viewed in error, immediately discontinue use of the
+    application.  Anyone using this software code and the applications will be
+    subject to monitoring for improper use, system maintenance and security
+    purposes, and is advised that if such monitoring reveals possible criminal
+    activity or policy violation, Cotiviti personnel may provide the evidence of
+    such monitoring to law enforcement or other officials, and the user may be
+    subject to disciplinary action by Cotiviti, up to and including termination
+    of employment.
+
+    Use of this software code and any applications and information therein
+    constitutes acknowledgement of and consent to this notice
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.cotiviti</groupId>
+  <artifactId>cotiviti-core-license</artifactId>
+  <version>2-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>${project.artifactId}</name>
+  <description>Cotiviti License for Mycila Maven License Plugin - This is the text for the internal license plugin</description>
+	<!-- URL for site gen -->
+  <url>${cotiviti.site.view.url}</url>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>central</id>
+      <url>https://artifacts.cotiviti.io/repository/libs-snapshots-local/</url>
+    </snapshotRepository>
+    <repository>
+      <id>central</id>
+      <url>https://artifacts.cotiviti.io/repository/libs-releases-local/</url>
+    </repository>
+    <site>
+      <id>central</id>
+      <url>dav:${cotiviti.site.view.url}</url>
+    </site>
+  </distributionManagement>
+  <properties>
+    <cotiviti.site.view.url>https://artifacts.cotiviti.io/repository/sites/${project.groupId}/${project.artifactId}/${project.version}</cotiviti.site.view.url>
+    <maven.site.doxia.model.version>1.8</maven.site.doxia.model.version>
+    <maven.site.fluid.skin.version>1.6</maven.site.fluid.skin.version>
+    <maven.site.plugin.version>3.6</maven.site.plugin.version>
+    <maven.wagon.version>3.0.0</maven.wagon.version>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>${maven.site.plugin.version}</version>
+        <configuration>
+          <locales>en</locales>
+          <stagingDirectory>${project.build.directory}/Staging/</stagingDirectory>
+          <topSiteURL>${cotiviti.site.view.url}</topSiteURL>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-markdown</artifactId>
+            <version>${maven.site.doxia.model.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-fml</artifactId>
+            <version>${maven.site.doxia.model.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-latex</artifactId>
+            <version>${maven.site.doxia.model.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-apt</artifactId>
+            <version>${maven.site.doxia.model.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-xdoc</artifactId>
+            <version>${maven.site.doxia.model.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.maven.wagon</groupId>
+            <artifactId>wagon-webdav-jackrabbit</artifactId>
+              <!-- This has to be here because, while this parent defines the version, it doesn't resolve "soon enough" -->
+            <version>${maven.wagon.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+</project>
