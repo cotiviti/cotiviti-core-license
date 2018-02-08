@@ -34,6 +34,11 @@
   <description>Cotiviti License for Mycila Maven License Plugin - This is the text for the internal license plugin</description>
 	<!-- URL for site gen -->
   <url>${cotiviti.site.view.url}</url>
+  <scm>
+    <connection>scm:git:https://github.com/cotiviti/${project.artifactId}</connection>
+    <developerConnection>scm:git:git@github.com:cotiviti/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/cotiviti/${project.artifactId}/tree/master</url>
+  </scm>
   <distributionManagement>
     <snapshotRepository>
       <id>central</id>
@@ -50,9 +55,15 @@
   </distributionManagement>
   <properties>
     <cotiviti.site.view.url>https://artifacts.cotiviti.io/repository/sites/${project.groupId}/${project.artifactId}/${project.version}</cotiviti.site.view.url>
+    <gitlog.maven.plugin.version>1.13.7</gitlog.maven.plugin.version>
+    <maven.changelog.plugin.version>2.3</maven.changelog.plugin.version>
+    <maven.changes.plugin.version>2.12.1</maven.changes.plugin.version>
+    <maven.project.info.plugin.version>2.9</maven.project.info.plugin.version>
+    <maven.project.report.plugin.version>2.9</maven.project.report.plugin.version>
     <maven.site.doxia.model.version>1.8</maven.site.doxia.model.version>
     <maven.site.fluid.skin.version>1.6</maven.site.fluid.skin.version>
     <maven.site.plugin.version>3.6</maven.site.plugin.version>
+    <maven.taglist.plugin.version>2.4</maven.taglist.plugin.version>
     <maven.wagon.version>3.0.0</maven.wagon.version>
   </properties>
   <build>
@@ -100,6 +111,46 @@
           </dependency>
         </dependencies>
       </plugin>
+      <plugin>
+        <groupId>com.github.danielflower.mavenplugins</groupId>
+        <artifactId>gitlog-maven-plugin</artifactId>
+        <version>${gitlog.maven.plugin.version}</version>
+        <configuration>
+          <generateMarkdownChangeLog>true</generateMarkdownChangeLog>
+          <generateSimpleHTMLChangeLog>true</generateSimpleHTMLChangeLog>
+          <simpleHTMLChangeLogFilename>github-changelog-simple.html</simpleHTMLChangeLogFilename>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>${maven.project.info.plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <version>${maven.changelog.plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <version>${maven.taglist.plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changes-plugin</artifactId>
+        <version>${maven.changes.plugin.version}</version>
+        <configuration>
+          <onlyMilestoneIssues>false</onlyMilestoneIssues>
+          <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
+          <columnNames>Type,Key,Summary,Assignee,Status,Fix Version</columnNames>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>
