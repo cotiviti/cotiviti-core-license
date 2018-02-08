@@ -23,7 +23,8 @@
     constitutes acknowledgement of and consent to this notice
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.cotiviti</groupId>
   <artifactId>cotiviti-core-license</artifactId>
@@ -37,8 +38,7 @@
   <scm>
     <connection>scm:git:https://github.com/cotiviti/${project.artifactId}</connection>
     <developerConnection>scm:git:git@github.com:cotiviti/${project.artifactId}.git</developerConnection>
-    <url>https://github.com/cotiviti/${project.artifactId}/blob/${cotiviti.github.branch}</url>
-    <tag>HEAD</tag>
+    <url>${cotiviti.scm.url}</url>
   </scm>
   <distributionManagement>
     <snapshotRepository>
@@ -76,6 +76,7 @@
     </developer>
   </developers>
   <properties>
+    <cotiviti.scm.url>https://github.com/cotiviti/${project.artifactId}/blob/${cotiviti.github.branch}</cotiviti.scm.url>
     <cotiviti.site.view.url>https://artifacts.cotiviti.io/repository/sites/${project.groupId}/${project.artifactId}/${project.version}</cotiviti.site.view.url>
     <gitlog.maven.plugin.version>1.13.7</gitlog.maven.plugin.version>
     <cotiviti.github.branch>develop</cotiviti.github.branch>
