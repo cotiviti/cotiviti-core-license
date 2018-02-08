@@ -27,7 +27,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.cotiviti</groupId>
   <artifactId>cotiviti-core-license</artifactId>
-  <version>8-SNAPSHOT</version>
+  <version>8</version>
   <packaging>jar</packaging>
   <name>${project.artifactId}</name>
   <description>Cotiviti License for Mycila Maven License Plugin - This is the text for the internal license plugin</description>
@@ -38,7 +38,7 @@
     <connection>scm:git:https://github.com/cotiviti/${project.artifactId}</connection>
     <developerConnection>scm:git:git@github.com:cotiviti/${project.artifactId}.git</developerConnection>
     <url>${cotiviti.scm.url}</url>
-    <tag>HEAD</tag>
+    <tag>cotiviti-core-license-8</tag>
   </scm>
   <distributionManagement>
     <snapshotRepository>
